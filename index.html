@@ -1,4 +1,4 @@
-6<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -676,6 +676,18 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
+  /* RESPONSIVE */
+  @media (max-width: 900px) {
+    section { padding: 80px 30px; }
+    .hero { padding: 120px 30px 80px; }
+    nav { padding: 20px 30px; }
+    .hero-stats { position: static; transform: none; flex-direction: row; margin-top: 40px; }
+    .about-grid { grid-template-columns: 1fr; }
+    .about-visual { height: 250px; }
+    .contact-wrapper { grid-template-columns: 1fr; }
+    .nav-links { display: none; }
+  }
+
   /* =========================
    GLOBAL RESPONSIVE FIXES
 ========================= */
@@ -860,8 +872,7 @@ img, canvas {
     padding: 12px;
   }
 }
-
-  /* ===== MOBILE FIX (OVERLAP ISSUE SOLVED) ===== */
+/* ===== MOBILE FIX (OVERLAP ISSUE SOLVED) ===== */
 
 @media (max-width: 768px) {
 
@@ -906,12 +917,12 @@ img, canvas {
     display: none;
   }
 }
-
-  /* 🔥 HERO MOBILE SPACING FIX */
+/* 🔥 HERO MOBILE SPACING FIX */
 @media (max-width: 768px) {
 
   .hero {
-    min-height: auto;   
+    min-height: auto;        
+    padding-bottom: 100px;   
   }
 
   .hero-content {
@@ -925,70 +936,31 @@ img, canvas {
   .hero-stats {
     margin-top: 30px;
   }
-}
-  /* ================= FINAL MOBILE FIX (CLEAN) ================= */
-@media (max-width: 768px) {
 
-  .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    min-height: auto;
-    padding: 100px 20px 60px;
-  }
-
-  .hero-content {
-    width: 100%;
-  }
-
-  .hero-ctas {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 12px;
-    margin-top: 20px;
-  }
-
-  .hero-ctas a {
-    width: 100%;
-    text-align: center;
-  }
-
-  .btn-primary,
-  .btn-secondary {
-    width: 100%;
-  }
-
-  /* 🔥 MAIN FIX (NO OVERLAP EVER) */
-  .hero-stats {
-    position: relative !important;
-    top: auto !important;
-    right: auto !important;
-    transform: none !important;
-
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    gap: 16px;
-    margin-top: 25px;
-  }
-
-  .stat-card {
-    width: 100%;
-  }
-
-  /* mobile cleanup */
-  .cursor,
-  .cursor-ring {
-    display: none;
+  /* PULL ABOUT SECTION  */
+  .about-section {
+    margin-top: -40px;
   }
 }
- @media (max-width: 768px) {
-  .hero {
-    min-height: auto !important;
-    padding: 100px 20px 40px;
+
+/* LETTER ANIMATION */
+.animated-name span {
+  display: inline-block;
+}
+
+.letter {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(40px) scale(0.8);
+  animation: flyIn 0.8s forwards;
+}
+
+@keyframes flyIn {
+  to {
+    opacity: 1;
+    transform: translate(0,0) scale(1);
   }
-} 
+}
 </style>
 </head>
 <body>
@@ -1015,9 +987,9 @@ img, canvas {
   <div class="hero-grid"></div>
   <div class="hero-content">
     <div class="hero-badge">Available for Internships</div>
-    <h1>
-      <span class="name-line">Hariom</span>
-      <span class="name-line"><span class="accent-word">Tiwari</span></span>
+    <h1 class="animated-name">
+      <span class="name-line" id="firstName"></span>
+      <span class="name-line accent-word" id="lastName"></span>
     </h1>
     <p class="hero-subtitle">Aspiring Data Scientist & ML Engineer</p>
     <p class="hero-desc">
@@ -1592,6 +1564,32 @@ img, canvas {
     });
   }, { threshold: 0.5 });
   document.querySelectorAll('.hero-stats').forEach(el => statsObserver.observe(el));
+  // 🔥 LETTER FLY-IN ANIMATION
+function animateName(id, text) {
+  const container = document.getElementById(id);
+  container.innerHTML = '';
+
+  text.split('').forEach((char, i) => {
+    const span = document.createElement('span');
+    span.classList.add('letter');
+    span.textContent = char;
+
+    // random directions
+    const x = (Math.random() - 0.5) * 200;
+    const y = (Math.random() - 0.5) * 200;
+
+    span.style.transform = `translate(${x}px, ${y}px) scale(0.5)`;
+    span.style.animationDelay = `${i * 0.05}s`;
+
+    container.appendChild(span);
+  });
+}
+
+// run on load
+window.addEventListener('load', () => {
+  animateName('firstName', 'Hariom');
+  animateName('lastName', 'Tiwari');
+});
 </script>
 </body>
 </html>
