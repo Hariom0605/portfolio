@@ -687,6 +687,191 @@
     .contact-wrapper { grid-template-columns: 1fr; }
     .nav-links { display: none; }
   }
+
+  /* =========================
+   GLOBAL RESPONSIVE FIXES
+========================= */
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+img, canvas {
+  max-width: 100%;
+  height: auto;
+}
+
+/* =========================
+   TABLET (≤ 1024px)
+========================= */
+@media (max-width: 1024px) {
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-stats {
+    position: static;
+    transform: none;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 40px;
+  }
+
+  .stat-card {
+    flex: 1 1 120px;
+  }
+
+  .projects-grid {
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  }
+
+  .contact-wrapper {
+    gap: 40px;
+  }
+}
+
+/* =========================
+   MOBILE (≤ 768px)
+========================= */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 16px 20px;
+  }
+
+  .hero {
+    padding: 100px 20px 60px;
+  }
+
+  section {
+    padding: 60px 20px;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.2rem, 8vw, 3.5rem);
+  }
+
+  .hero-subtitle {
+    font-size: 1rem;
+  }
+
+  .hero-desc {
+    font-size: 0.8rem;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .about-visual {
+    height: 200px;
+  }
+
+  .skills-categories {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .certs-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-visual {
+    padding: 24px;
+  }
+
+  .exp-item {
+    padding-left: 50px;
+  }
+
+  .exp-timeline::before {
+    left: 16px;
+  }
+
+  .exp-dot {
+    left: 8px;
+  }
+}
+
+/* =========================
+   SMALL MOBILE (≤ 480px)
+========================= */
+@media (max-width: 480px) {
+
+  .hero {
+    padding: 90px 16px 50px;
+  }
+
+  section {
+    padding: 50px 16px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.8rem;
+  }
+
+  .project-card {
+    padding: 20px;
+  }
+
+  .skill-cat {
+    padding: 20px;
+  }
+
+  .contact-link {
+    padding: 12px 14px;
+  }
+
+  .stat-card {
+    padding: 16px;
+  }
+}
+
+/* =========================
+   EXTRA SMALL DEVICES (≤ 360px)
+========================= */
+@media (max-width: 360px) {
+
+  .hero h1 {
+    font-size: 1.7rem;
+  }
+
+  .hero-desc {
+    font-size: 0.75rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    font-size: 0.7rem;
+    padding: 12px;
+  }
+}
 </style>
 </head>
 <body>
