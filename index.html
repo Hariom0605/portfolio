@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+6<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -676,18 +676,6 @@
   ::-webkit-scrollbar-track { background: var(--bg); }
   ::-webkit-scrollbar-thumb { background: var(--accent); border-radius: 2px; }
 
-  /* RESPONSIVE */
-  @media (max-width: 900px) {
-    section { padding: 80px 30px; }
-    .hero { padding: 120px 30px 80px; }
-    nav { padding: 20px 30px; }
-    .hero-stats { position: static; transform: none; flex-direction: row; margin-top: 40px; }
-    .about-grid { grid-template-columns: 1fr; }
-    .about-visual { height: 250px; }
-    .contact-wrapper { grid-template-columns: 1fr; }
-    .nav-links { display: none; }
-  }
-
   /* =========================
    GLOBAL RESPONSIVE FIXES
 ========================= */
@@ -938,10 +926,62 @@ img, canvas {
   .hero-stats {
     margin-top: 30px;
   }
+}
+  /* ================= FINAL MOBILE FIX (CLEAN) ================= */
+@media (max-width: 768px) {
 
-  /* PULL ABOUT SECTION  */
-  .about-section {
-    margin-top: -40px;
+  .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-height: auto;
+    padding: 100px 20px 60px;
+  }
+
+  .hero-content {
+    width: 100%;
+  }
+
+  .hero-ctas {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-top: 20px;
+  }
+
+  .hero-ctas a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  /* 🔥 MAIN FIX (NO OVERLAP EVER) */
+  .hero-stats {
+    position: relative !important;
+    top: auto !important;
+    right: auto !important;
+    transform: none !important;
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+    margin-top: 25px;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+
+  /* mobile cleanup */
+  .cursor,
+  .cursor-ring {
+    display: none;
   }
 }
 </style>
