@@ -872,6 +872,52 @@ img, canvas {
     padding: 12px;
   }
 }
+
+  /* ===== MOBILE FIX (OVERLAP ISSUE SOLVED) ===== */
+
+@media (max-width: 768px) {
+
+  .hero {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .hero-ctas {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .hero-ctas a {
+    width: 100%;
+    text-align: center;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    width: 100%;
+  }
+
+  /* 🔥 MAIN FIX (important) */
+  .hero-stats {
+    position: static;
+    transform: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+    margin-top: 30px;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+
+  /* optional but recommended */
+  .cursor,
+  .cursor-ring {
+    display: none;
+  }
+}
 </style>
 </head>
 <body>
